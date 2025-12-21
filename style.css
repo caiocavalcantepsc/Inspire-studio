@@ -283,6 +283,7 @@ h1, h2, h3, h4 {
     border-radius: 50px;
     font-size: 1rem;
     margin-bottom: 25px;
+    margin-top: 50px;
     backdrop-filter: blur(10px);
     font-weight: 500;
 }
@@ -911,12 +912,14 @@ ul {
     }
     
     .contact-info {
+        display: none;
         flex-direction: column;
         gap: 10px;
         width: 100%;
     }
     
     .social-media {
+        display:none;
         justify-content: center;
     }
     
