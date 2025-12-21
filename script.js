@@ -1,6 +1,5 @@
 // script.js
 document.addEventListener('DOMContentLoaded', function() {
-    // Mobile Menu Toggle
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const navMenu = document.querySelector('.nav-menu');
     
@@ -20,7 +19,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Smooth Scrolling for Navigation Links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
@@ -35,7 +33,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     behavior: 'smooth'
                 });
                 
-                // Close mobile menu if open
                 if (window.innerWidth <= 768) {
                     navMenu.style.display = 'none';
                 }
@@ -43,7 +40,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Header Scroll Effect
     const header = document.querySelector('.header');
     let lastScroll = 0;
     
@@ -56,10 +52,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         if (currentScroll > lastScroll && currentScroll > 100) {
-            // Scrolling down
             header.style.transform = 'translateY(-100%)';
         } else {
-            // Scrolling up
             header.style.transform = 'translateY(0)';
             header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
         }
@@ -67,7 +61,6 @@ document.addEventListener('DOMContentLoaded', function() {
         lastScroll = currentScroll;
     });
     
-    // Active Navigation Link
     const sections = document.querySelectorAll('section[id]');
     
     function highlightNavigation() {
@@ -91,7 +84,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     window.addEventListener('scroll', highlightNavigation);
     
-    // Animation on Scroll
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
@@ -105,19 +97,39 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, observerOptions);
     
-    // Observe elements for animation
     document.querySelectorAll('.feature-card, .service-card').forEach(el => {
         observer.observe(el);
     });
     
-    // Form Submission (example)
     const contactForm = document.querySelector('form');
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            // Add your form submission logic here
             alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
             contactForm.reset();
         });
     }
 });
+
+const myObserver = new IntersectionObserver((entries)=> {
+    //Itersection é um valor booleano, ou seja quando vc está numa parte da tela é true e quando não está é false
+    //com isso essa primeira variável fica vendo em qual parte da tela vc está
+    entries.forEach((entry)=> {
+        //Essa parte pega os elementos observados
+        if(entry.isIntersecting){
+            //se ele estiver na sua tela  classe show criada no css
+            //será ativada
+            entry.target.classList.add('show')
+        } else {
+            //no momento em que você rola e tal elemento sai da área de visão da tela
+            //a classe show é removida, e a classe padrão setada lá que é a hidden 
+            //passa a ser usada
+            entry.target.classList.remove('show')
+        }
+    })
+})
+
+const elements = document.querySelectorAll('.hidden, .hidden-blurless')
+//isso seleciona todos os elementos escondidos 
+elements.forEach((element) => myObserver.observe(element))
+//e fica vigiando eles
