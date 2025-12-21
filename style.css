@@ -294,7 +294,7 @@ h4 {
 
 .hero-title {
     font-size: 3.5rem;
-    margin-bottom: 25px;
+    margin-bottom: -45px;
     line-height: 1.1;
 }
 
@@ -1033,20 +1033,20 @@ ul {
 .hidden{
     opacity: 0;
     filter: blur(15px);
-    transition: all 2s;
+    transition: all 1s;
     transform: translateX(-100%);
 }
 
 .hidden-blurless{
     opacity: 0;
     filter: blur(15px);
-    transition: all 2s;
+    transition: all 1s;
 }
 
 .show{
     opacity: 1;
     filter: blur(0px);
-    transition: all 2s;
+    transition: all 1s;
     transform: translateX(0%);
 }
 
@@ -1167,7 +1167,7 @@ ul {
     }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
     .container {
         padding: 0 20px;
     }
@@ -1257,13 +1257,13 @@ ul {
 
     .hero-title {
         font-size: 2.2rem;
-        margin-bottom: 20px;
+        margin-bottom: 30px;
     }
 
     .hero-subtitle {
         font-size: 0.9rem;
-        padding: 8px 20px;
-        margin-bottom: 20px;
+        padding: 0 20px;
+        margin-bottom: 50px;
     }
 
     .hero-description {
@@ -1361,12 +1361,6 @@ ul {
     .footer-grid {
         grid-template-columns: 1fr;
         gap: 40px;
-        text-align: center;
-    }
-
-    .footer-description {
-        margin-left: auto;
-        margin-right: auto;
     }
 
     .footer-social {
