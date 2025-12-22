@@ -1,5 +1,5 @@
 :root {
-    --primary-color: #00b698;
+    --primary-color: #00d4b3;
     --primary-dark: #00937a;
     --primary-light: #00d4b3;
     --secondary-color: #2d3436;
@@ -189,7 +189,7 @@ h4 {
 }
 
 .logo-secondary {
-    color: white;
+    color: #00d4b3;
 }
 
 .logo h1 {
@@ -215,6 +215,7 @@ h4 {
 
 .nav-link:hover,
 .nav-link.active {
+    display: flex;
     color: var(--primary-color);
 }
 
@@ -294,7 +295,7 @@ h4 {
 
 .hero-title {
     font-size: 3.5rem;
-    margin-bottom: -45px;
+    margin-bottom: 25px;
     line-height: 1.1;
 }
 
@@ -1182,36 +1183,41 @@ ul {
 
     .nav-menu {
         display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background: white;
-        flex-direction: column;
-        padding: 30px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        gap: 0;
-        z-index: 1000;
     }
 
+    /* CORREÇÃO: Classe que o JavaScript usa para mostrar o menu */
     .nav-menu.active {
-        display: flex;
+        left: 0; /* Traz para dentro da tela */
+        display: flex; /* Garante que está visível */
     }
 
-    .nav-link {
-        padding: 15px 0;
-        border-bottom: 1px solid var(--gray-light);
-        width: 100%;
-        text-align: center;
-    }
-
-    .nav-link:last-child {
-        border-bottom: none;
-    }
-
+    /* Botão do menu mobile - CORRIGIDO */
     .mobile-menu-btn {
-        display: block;
+        display: flex !important; /* Força exibição */
         order: 3;
+        align-items: center;
+        justify-content: center;
+        width: 44px; /* Tamanho mínimo para toque */
+        height: 44px;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        color: var(--secondary-color);
+        cursor: pointer;
+        padding: 10px;
+        z-index: 10000; /* Z-index maior que o menu */
+        position: relative;
+    }
+    
+    /* Estilo quando menu está aberto */
+    .mobile-menu-btn.active {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: var(--primary-color);
+        color: white;
+        border-radius: 50%;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     }
 
     .nav-cta {
@@ -1219,12 +1225,26 @@ ul {
     }
 
     .main-nav .container {
+        display: flex;
         justify-content: space-between;
+        /* align-items: center; */
+    }
+
+    .main-nav {
+        display: flex;
+        margin-right: 30%;
+        align-items: center;
+    }
+
+    .main-nav h1 {
+        width:40px;
+        align-items: center;
     }
 
     .logo {
         order: 1;
         flex-grow: 1;
+        text-align: center;
     }
 
     .icone-main-nav {
@@ -1393,8 +1413,12 @@ ul {
     .info-item i {
         margin-bottom: 5px;
     }
+    
+    /* CORREÇÃO: Previne scroll quando menu está aberto */
+    body.menu-open {
+        overflow: none;
+    }
 }
-
 /* MOBILE PEQUENO (480px - 575px) */
 @media (max-width: 575px) {
     .container {
